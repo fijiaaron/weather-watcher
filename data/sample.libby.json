@@ -1,0 +1,24 @@
+{
+    "coord": {
+        "lon": -115.56,
+        "lat": 48.39
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 19.93,
+        "feels_like": 19.59,
+        "temp_min": 18.89,
+        "temp_max": 22.22,
+        "pressure": 1020,
+        "humidity": 59
+    },
+    "visibility": 10000,
+    "waa

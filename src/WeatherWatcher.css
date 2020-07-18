@@ -1,0 +1,124 @@
+.WW_App {
+    font-size: 17px;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.WW_Header {
+    padding: 5px 10px;
+    border-bottom: 2px solid black;
+}
+.WW_Header h1 {
+    font-size: 3rem;
+    font-weight: 200;
+    margin: 0;
+    padding: 0;
+}
+.WW_Header img {
+    height: 3.25rem;
+    vertical-align: bottom;
+    margin: 0;
+    padding: 0;
+}
+
+.WW_Searcher {
+    padding: 10px 10px;
+    border-bottom: 2px solid black;
+}
+
+.WW_Search_Form {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.WW_Search_Form label {
+    padding-right: 1.5ch;
+}
+
+.WW_Search_Form input[type=text] {
+    padding: 3px 3px;
+    width: 32ch;
+    font-size: 1rem;
+}
+
+.WW_Search_Field::placeholder {
+    color: #AAAAAA;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto';
+    letter-spacing: 0.015em;
+}
+
+.WW_Results {
+    padding: 0px 10px;
+}
+
+
+.WW_Result  {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dotted gray;
+}
+
+.WW_Result > div {
+    font-size: 1.4rem;
+    margin: 0px 0px;
+    display: inline;
+}
+
+
+.WW_Location {
+}
+
+.WW_Temperature {
+}
+
+.WW_Weather {
+}
+
+.WW_Weather_Icon {
+    margin: 0; padding: 0;
+}
+
+.WW_Weather_Icon img {
+    padding-top: 10px;
+}
+
+.WW_Wind {
+}
+
+.WW_Footer {
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 5px 10px;
+    border-top: 2px solid black;
+}
+
+.WW_Footer a {
+    text-decoration: none;
+    color: #369;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+   .WW_Header .logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
