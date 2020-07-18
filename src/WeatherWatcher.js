@@ -11,7 +11,7 @@ const UNITS="imperial"; // metric or imperial
 const TEMP_SYMBOL = UNITS === 'metric' ? "C" : "F";
 
 const LOCATION="Libby,US"; // city,country or zipcode
-const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
+const OPENWEATHER_API_KEY = <YOUR API KEY></YOUR>;
 // const OPENWEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?q=${LOCATION}&units=${UNITS}&APPID=${OPENWEATHER_API_KEY}`;
 
 class WeatherWatcher extends React.Component
