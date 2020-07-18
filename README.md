@@ -1,4 +1,4 @@
-first set OPENWEATHER_API_KEY in WeatherWatcher.js
+first set REACT_APP_OPENWEATHER_API_KEY in .env
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

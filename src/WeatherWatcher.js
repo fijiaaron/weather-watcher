@@ -5,20 +5,21 @@ import WWHeader from './components/WWHeader';
 import WWSearcher from './components/WWSearcher';
 import WWResults from './components/WWResults';
 import WWFooter from './components/WWFooter';
+import WWDev from './components/WWDev';
 import { getCardinalDirection, getCardinalArrow }from './lib/getCardinalDirection';
 
 const UNITS="imperial"; // metric or imperial
 const TEMP_SYMBOL = UNITS === 'metric' ? "C" : "F";
-
 const LOCATION="Libby,US"; // city,country or zipcode
-const OPENWEATHER_API_KEY = <YOUR API KEY></YOUR>;
-// const OPENWEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?q=${LOCATION}&units=${UNITS}&APPID=${OPENWEATHER_API_KEY}`;
+const OPENWEATHER_API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY
 
 class WeatherWatcher extends React.Component
 {
 	componentDidMount()
 	{
-		this.state = this.getWeather();
+		if (OPENWEATHER_API_KEY) {
+			this.setState(this.getWeather());
+		}
 	}
 
 	render() {
@@ -42,6 +43,7 @@ class WeatherWatcher extends React.Component
 					error={this.state.error}
 					/>
 				<WWFooter/>
+				<WWDev/>
 			</div>
 		)
 	}
@@ -112,6 +114,5 @@ function mapWeatherData(data)
 
 	return weather;
 }
-
 
 export default WeatherWatcher;
