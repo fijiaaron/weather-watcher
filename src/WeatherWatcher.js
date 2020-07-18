@@ -10,16 +10,35 @@ import { getCardinalDirection, getCardinalArrow }from './lib/getCardinalDirectio
 
 const UNITS="imperial"; // metric or imperial
 const TEMP_SYMBOL = UNITS === 'metric' ? "C" : "F";
-const LOCATION="Libby,US"; // city,country or zipcode
+const LOCATION="Honolulu"; // city,country or zipcode
+const DEFAULT_LOCATION=LOCATION;
 const OPENWEATHER_API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY
+
+var getPosition = function (options) {
+	return new Promise(function (resolve, reject) {
+		navigator.geolocation.getCurrentPosition(resolve, reject, options);
+	});
+}
 
 class WeatherWatcher extends React.Component
 {
 	componentDidMount()
 	{
-		if (OPENWEATHER_API_KEY) {
-			this.setState(this.getWeather());
-		}
+		getPosition()
+			.then( (position) => {
+				console.log('position', position);
+				this.setState({latitude: position.coords.latitude, longitude: position.coords.longitude});
+			})
+			.catch( (error) => {
+				console.log(error);
+				this.setState({location: DEFAULT_LOCATION});
+			})
+			.finally( () => {
+				console.log('after getPosition???')
+				if (OPENWEATHER_API_KEY) {
+					this.setState(this.getWeather());
+				}
+			});
 	}
 
 	render() {
@@ -49,6 +68,9 @@ class WeatherWatcher extends React.Component
 	}
 
 	state = {
+		location: undefined,
+		latitude: undefined,
+		longitude: undefined,
 		city: undefined,
 		country: undefined,
 		coords: undefined,
@@ -67,17 +89,28 @@ class WeatherWatcher extends React.Component
 
 	// Arrow function binds this to component
 	getWeather = async (event) => {
-		let location = LOCATION;
 		
 		if (event) { 
 			event.preventDefault();
 			location = event.target.location.value;
 		}
+
+		let location = this.state.location;
+		let lat = this.state.latitude;
+		let lon = this.state.longitude;
+		let URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=${UNITS}&appid=${OPENWEATHER_API_KEY}`
+
+		if (location)
+		{
+			console.log('location', location);
+		}
+		if (! location && lat && lon) {	
+			console.log("lat and lon", lat, lon);
+			URL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${UNITS}&appid=${OPENWEATHER_API_KEY}`
+		}
 		
-		console.log(location);
-
-		let URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=${UNITS}&APPID=${OPENWEATHER_API_KEY}`
-
+		console.log(URL);
+	
 		const weatherResponse = await fetch(URL); 
 		const data = await weatherResponse.json();
 		console.log(data);
