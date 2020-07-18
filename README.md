@@ -1,4 +1,7 @@
-first set REACT_APP_OPENWEATHER_API_KEY in .env
+To use this app you need an API key from https://openweathermap.org/
+Register for a free API key, and then add it as
+REACT_APP_OPENWEATHER_API_KEY in .env
+(you can rename .env_example to .env)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
