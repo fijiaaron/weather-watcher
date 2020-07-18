@@ -88,16 +88,17 @@ class WeatherWatcher extends React.Component
 	}
 
 	// Arrow function binds this to component
-	getWeather = async (event) => {
+	getWeather = async (event) => {		
 		
+		let location = this.state.location;
+		let lat = this.state.latitude;
+		let lon = this.state.longitude;
+
 		if (event) { 
 			event.preventDefault();
 			location = event.target.location.value;
 		}
 
-		let location = this.state.location;
-		let lat = this.state.latitude;
-		let lon = this.state.longitude;
 		let URL = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=${UNITS}&appid=${OPENWEATHER_API_KEY}`
 
 		if (location)
